@@ -1,93 +1,40 @@
-getgenv().Config = {
-        Dashboard = {
-            Enabled = false, -- true = Connect to Adopt Me dashboard for remote monitoring/control (uses websocket), false = Local farming only (better performance, no external connections)
-            GroupName = "adoptme", -- Group name to organize accounts on the Adopt Me dashboard (only used if Enabled = true)
-        },
-        BabyFarm = true, -- Enable/disable baby farming
-        PetFarm = {
-            Enabled = true, -- Enable/disable pet farming
-            FarmEggs = false, -- Farm eggs instead of regular pets
-            BuyEggs = false, -- Automatically buy eggs when needed
-            EggType = "aztec_egg_2025_aztec_egg", -- Which egg type to farm (any or specific egg ID)
-            BuyEggType = "aztec_egg_2025_aztec_egg", -- Which egg type to buy
-            MaxPets = 1, -- Maximum pets to equip (1-2)
-            FarmUntilFullGrown = false, -- Prioritize pets that aren't full grown
-            PrioritizeFriendship = true, -- Prioritize pets with higher friendship
-            SelectiveFarm = false, -- Only farm specific pet types
-            SelectedPetTypes = {}, -- Pet types to farm when SelectiveFarm is enabled
-        },
-        AutoNeon = { -- Auto neon 
-            Enabled = true,
-            MakeMega = true, -- to use neon pets to make mega neon
-        },
-        Misc = {
-            AutoShowUI = false, -- (To Load the ui or not)
-        },
-        Performance = {
-            Disable3DRendering = true, -- Disable 3D rendering for better performance
-            ReduceGraphics = true, -- Reduce graphics quality to minimum
-        },
-        AutoPotion = {
-            Enabled = false, -- Use age potions automatically
-            SelectedPets = {"penguins_2025_dango_penguins", "pet_recycler_2025_giant_panda"}, -- Pet types to age with potions
-        },
-        AutoTrade = {
-            Enabled = false,
-            AutoAcceptTrades = false,
-            SendTradesTo = "adoptbro_3",
-            TradeMode = "specific", -- "specific" or "all"
-            Categories = {"pets"},
-            Items = {"pet_recycler_2025_giant_panda", "penguins_2025_dango_penguins"}, -- e.g., {"dog", "cat", "sandwich"}
-            ItemCounts = {100}, -- e.g., {30, 12} - corresponds to Items array
-            FilterByAge = true,
-            SelectedAges = {6}, -- 1=Newborn, 2=Junior, 3=PreTeen, 4=Teen, 5=PostTeen, 6=FullGrown
-            ExcludeNeons = false,
-            ExcludeFullGrown = false
-        },
-        AutoBuy = {
-            Enabled = false, -- Enable auto buying system
-            SelectedItems = {}, -- Items to buy (e.g., {"pet_food", "water_cooler", "pizza_ingredients"})
-        },
-        AutoPay = {
-            Enabled = false, -- on or off 
-            TargetPlayer = "", -- username of player to pay
-        },
-        AutoOpen = { -- auto open gift boxes/baits etc 
-            Enabled = false,
-            Items = {},
-        },
-        AutoRecycle = {
-            Enabled = true, -- Enable auto recycler system
-            RarityFilter = { --Rarity filter for recycling pets
-                common = true,
-                uncommon = true,
-                rare = true,
-                ultra_rare = true,
-                legendary = false
-            },
-            KeepNeons = true,
-            KeepFullGrown = false, -- Keep full grown pets
-            SelectiveMode = false, -- Only recycle specific pet types
-            SelectedPets = {}
-        },
-        IdleProgression = { -- pet pen
-            Enabled = true,
-            SelectedPets = {"aztec_egg_2025_temple_friend", "aztec_egg_2025_winged_snake"},  -- List of pet IDs to use for the pet pen
-            AutoMinigame = true -- Automatically start the pet pen micro minigame = alot of bucks and xp :moneybag:
-        },
-       Webhook = {
-            Enabled = true, -- Send webhook notifications
-            URL = "https://discord.com/api/webhooks/1351289892742631464/dFS2JiDiUbHfiIbI9kaTyIRen66GbLcsHCtinTUnR_YaGQtFt14LKwvCfvTtRTyzzBId", -- Default Discord webhook URL
-            PetUnlock = {
-                Enabled = true, -- Send webhook notifications when unlocking a pet
-                URL = "https://discord.com/api/webhooks/1432973030887391365/NJY6sA-n62LXz3ipY77bj4CI5EVuD1glMnyATPniDCUoTdiXEC2hjhFs1SqQJKJn2hFV", -- Separate webhook for pet unlocks
-                FilterRarities = {"legendary"} -- Only send webhook for these rarities
-            },
-        },
-        TaskExclusion = {
-            Enabled = false, -- Enable task exclusion system
-            ExcludedTasks = {}, -- Tasks to skip (e.g., {"buccaneer_band", "summerfest_bonfire"})
-        },
-    };
-script_key="vNShNZMaBZPnAveehWzwJconcZulEdSv"
-loadstring(game:HttpGet("https://zekehub.com/scripts/AdoptMe/MassFarm.lua"))()
+task.spawn(function()
+    script_key="kEntHvnODLqhYlGlwuLvVBxuyuzqwtSW";
+    getgenv().Config = {
+        ["PetAMountToBuy"] = "999", -- can be 999
+        ["WhatCategory"] = "pets", -- gifts if WhatCategory = "" then = pets
+        ["PetRemoteToBuy"] = "aztec_egg_2025_aztec_egg", -- exemple for gifts halloween_2025_spider_box
+
+
+        ["PetFarmAutoSwitchFullGrown"] = false,
+        ["PetFarmActive"] = true, -- farm potion
+
+
+        ["EggFarmActive"] = true, -- farm egg, if no more eggs will farm potion, if found new egg will farm them to
+        ["EggToIgnore"] = {"pet_recycler_2025_crystal_egg"}, -- eggs to ignore when eggfarm active
+        ["LoopBuyEgg"] = true, -- when enough bucks will buy egg, only work with eggfarm
+        ["EggToBuyEgg"] = "aztec_egg_2025_aztec_egg",
+
+
+        ["NeonMegaFarm"] = false,
+        ["BuyEgg"] = "aztec_egg_2025_aztec_egg", -- only work with NeonMegaFarm, will loop buy this egg when enough bucks
+        
+
+        ["AutoReleasePet"] = true, -- work with egg/pet farm, will release selected rarity
+        ["RecycleWebhook"] = "https://discord.com/api/webhooks/1445032288390746153/S7zjlMjlhqr4BWDdzPq04XzBaei_oA_iFuVH2Vh5hPl0eUbUUD7LafrSZxACvrRdtk0g",
+        ["common"] = true,
+        ["uncommon"] = true,
+        ["rare"] = true,
+        ["ultra_rare"] = true,
+        ["legendary"] = true,
+
+        ["HideUselessGui"] = true,
+        ["Blur_username"] = true,
+        ["Blazing_Lion_Log"] = false,
+        ["DiscordId"] = "123456",
+        ["Webhook"] = "",
+        ["LegendaryWebhook"] = "https://discord.com/api/webhooks/1445032557438701608/S9fBXEoDoN_YwJkxDjaiFVn_DiiwCJuT3oo_iBKaem6R3UO8SYfqqGdQ7yZGrF6thqpQ",
+        ["NeonMegaWebhook"] = "",
+    }
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/66567bfd337b57eb059b58dbe1badb89.lua"))()
+end)
