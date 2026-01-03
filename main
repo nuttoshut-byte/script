@@ -5,7 +5,7 @@ getgenv().Config = {
         },
         BabyFarm = false, -- Does baby farm
         PetFarm = {
-            Enabled = true, -- Enables the Pet Farm
+            Enabled = false, -- Enables the Pet Farm
             FarmEggs = false, -- If true, equips eggs to hatch them. If false, equips regular pets
             BuyEggs = false, -- If FarmEggs is true and no eggs in inventory, buy eggs automatically
             EggType = "any", -- Which egg to equip ("any" = first available, or specific egg ID)
@@ -50,7 +50,7 @@ getgenv().Config = {
             FPSCap = 2, -- FPS cap option (0 = uncapped)
         },
         AutoPotion = {
-            Enabled = false, -- Use age potions on pets to level them up
+            Enabled = true, -- Use age potions on pets to level them up
             SelectedPets = {"winter_2025_christmas_spirit"}, -- Pet IDs to use potions on (empty = does nothing)
         },
         AutoBuy = {
