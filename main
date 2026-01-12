@@ -1,14 +1,14 @@
  getgenv().Config = {
-        BabyFarm = false, -- Does baby farm
+        BabyFarm = false, -- Does   farm
         PetFarm = {
-            Enabled = false, -- Enables the Pet Farm
-            FarmEggs = false, -- If true, equips eggs to hatch them. If false, equips regular pets
+            Enabled = true, -- Enables the Pet Farm
+            FarmEggs = true, -- If true, equips eggs to hatch them. If false, equips regular pets
             BuyEggs = false, -- If FarmEggs is true and no eggs in inventory, buy eggs automatically
-            EggType = "any", -- Which egg to equip ("any" = first available, or specific egg ID)
+            EggType = "aztec_egg_2025_aztec_egg", -- Which egg to equip ("any" = first available, or specific egg ID)
             BuyEggType = "any", -- Which egg to buy when BuyEggs is true ("any" or specific egg ID)
             MaxPets = 1, -- How many pets to equip at once (1 = free, 2 = requires Robux gamepass)
             FarmUntilFullGrown = false, -- If true, selects pets that aren't full grown first
-            PrioritizeFriendship = false, -- If true, selects pets with higher friendship level first
+            PrioritizeFriendship = true, -- If true, selects pets with higher friendship level first
             SelectiveFarm = false, -- If true, only farm pets in SelectedPetTypes list
             SelectedPetTypes = {}, -- Pet IDs to farm when SelectiveFarm is true (e.g., {"dog", "cat"})
         },
@@ -26,12 +26,12 @@
         },
         AutoBuy = {
             Enabled = false, -- Automatically buy items from shops
-            SelectedItems = {"gifts|winter_2025_angus_box"}, -- Item IDs to buy
+            SelectedItems = {"aztec_egg_2025_aztec_egg"}, -- Item IDs to buy
             BuyAmounts = {}, -- How many of each item to buy. Example: {5, 10} buys 5 cracked_eggs and 10 sandwiches. Empty {} buys infinite of each item. If there are more items than amounts, remaining items default to infinite.
         },
         AutoOpen = {
             Enabled = false, -- Open gift boxes automatically
-            Items = {"winter_2025_angus_box"}, -- Item IDs to auto open (e.g., {"winter_2025_angus_box"})
+            Items = {}, -- Item IDs to auto open (e.g., {"winter_2025_angus_box"})
         },
         AutoPotion = {
             Enabled = false, -- Use age potions on pets to level them up
@@ -39,7 +39,7 @@
         },
         AutoRecycle = {
             Enabled = true, -- Recycle pets at recycler for rewards
-            RarityFilter = {common = false, uncommon = false, rare = false, ultra_rare = false, legendary = true}, -- Which rarities to recycle (true = recycle, false = keep)
+            RarityFilter = {common = true, uncommon = true, rare = true, ultra_rare = true, legendary = false}, -- Which rarities to recycle (true = recycle, false = keep)
             AgeFilter = {}, -- empty = all ages, or {1,2,3,4,5,6}
             VersionFilter = {}, -- empty = all, or {"regular", "neon", "mega"}
             ExcludedPets = {}, -- Pet IDs to never recycle even if rarity matches {"dog", "cat"}
@@ -50,12 +50,12 @@
             ExcludedPets = {}, -- Pet IDs to never put in pet pen
         },
         Webhook = {
-            Enabled = false, -- Send webhook notifications to Discord
-            URL = "https://discord.com/api/", -- Discord webhook URL for notifications
+            Enabled = true, -- Send webhook notifications to Discord
+            URL = "https://discord.com/api/webhooks/1351289892742631464/dFS2JiDiUbHfiIbI9kaTyIRen66GbLcsHCtinTUnR_YaGQtFt14LKwvCfvTtRTyzzBId", -- Discord webhook URL for notifications
             PetUnlock = {
-                Enabled = false, -- Send webhook when hatching/unlocking a pet
-                URL = "https://discord.com/api/webhooks/", -- Webhook URL for pet unlocks
-                FilterRarities = {"legendary", "ultra_rare"}, -- Only send for these rarities
+                Enabled = true, -- Send webhook when hatching/unlocking a pet
+                URL = "https://discord.com/api/webhooks/1432973030887391365/NJY6sA-n62LXz3ipY77bj4CI5EVuD1glMnyATPniDCUoTdiXEC2hjhFs1SqQJKJn2hFV", -- Webhook URL for pet unlocks
+                FilterRarities = {"legendary"}, -- Only send for these rarities
             },
         },
         TaskExclusion = {
